@@ -1,22 +1,21 @@
-from typing import List
+arrays = [5,1,5]
+num=33
+def replaceChalk(chalk,k):
+    ArraySum = 0 #initialize sum with 0 that store all sum of the array values
+    for i in chalk:
+        ArraySum += i
 
-class Solution:
-    def chalkReplacer(self, chalk: List[int], k: int) -> int:
-        # Reduce k by the total sum of chalk using modulus
-        k = k % sum(chalk)
-        i = 0
-        # Iterate through the students
-        while k > 0:
-            k -= chalk[i]
-            if k < 0:
-                return i  # Return the index of the student who needs to replace the chalk
-            i += 1
-        return i  # This line is just for syntax and won't actually be reached
+    reminder = k % ArraySum  
 
-if __name__ == "__main__":
-    # Example test case
-    solution = Solution()
-    chalk = [5, 1, 5]
-    k = 22
-    result = solution.chalkReplacer(chalk, k)
-    print(f"The student who needs to replace the chalk is at index: {result}")
+    n = len(chalk)
+
+    for i in range(n):
+        if chalk[i] > reminder:
+            return i
+        else:
+            reminder -= chalk[i]
+
+    return reminder
+
+returnvalue = replaceChalk(arrays,num)
+print(returnvalue)
