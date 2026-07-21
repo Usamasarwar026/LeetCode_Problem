@@ -4,16 +4,16 @@
  */
 function memoize(fn) {
     const cache = {};
-    return function(...args) {
-        const keys = JSON.stringify(args)
-       if(cache[keys]){
-        return cache[keys]
-       }else{
+    return function (...args) {
+        const key = JSON.stringify(args)
+        if (key in cache) {
+            return cache[key];
+        }
         const result = fn(...args)
-        cache[keys] = result
+        cache[key] = result
         return result
-       }
-        
+
+
     }
 }
 
